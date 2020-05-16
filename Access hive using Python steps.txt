@@ -1,6 +1,6 @@
 #download anaconda
-curl -O https://repo.anaconda.com/archive/Anaconda3-5.3.1-Linux-x86_64.sh
-bash ~/Downloads/
+curl -O https://repo.anaconda.com/archive/Anaconda3-5.3.1-Linux-x86_64.sh -failed
+bash ~/Downloads/Anaconda3-5.3.1-Linux-x86_64.sh
 
 #check and verify anaconda download or not
 sha256sum Anaconda3-5.3.1-Linux-x86_64.sh
@@ -29,4 +29,17 @@ hostname -f
 >> conn = hive.Connection(host="student-VirtualBox", port=10000, username="student")
 >>   df = pd.read_sql("SELECT * FROM UN_GDP_2017 LIMIT 100", conn)
 >> print (df.head())
+
+***************************************
+from pyhive import hive
+import pandas as pd
+conn = hive.connection(host="student-VirtualBox", port=10000, username="student", auth='NONE')
+cursor = conn.cursor()
+cursor.execute("select * from UN_Nations limit 10")
+for result in cursor.fetchall():
+	print(result)
+
+>>   df = pd.read_sql("SELECT * FROM UN_GDP_2017 LIMIT 100", conn)
+>> print (df.head())
+
 
