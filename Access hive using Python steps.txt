@@ -1,0 +1,32 @@
+#download anaconda
+curl -O https://repo.anaconda.com/archive/Anaconda3-5.3.1-Linux-x86_64.sh
+bash ~/Downloads/
+
+#check and verify anaconda download or not
+sha256sum Anaconda3-5.3.1-Linux-x86_64.sh
+
+#install anaconda
+bash Anaconda3-5.3.1-Linux-x86_64.sh
+
+#update the conda
+cd ~
+source ~/.bashrc
+conda info
+conda update conda
+
+#install pyhive
+conda install -c blaze pyhive
+
+#mkdir test
+#cd test
+python
+from pyhive import hive
+exit
+hostname -f
+
+>>from pyhive import hive
+>>import pandas as pd
+>> conn = hive.Connection(host="student-VirtualBox", port=10000, username="student")
+>>   df = pd.read_sql("SELECT * FROM UN_GDP_2017 LIMIT 100", conn)
+>> print (df.head())
+
